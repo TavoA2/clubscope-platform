@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: hello-service
-          image: ghcr.io/tavoa2/clubscope-platform/hello-service:latest
+          image: ghcr.io/tavoa2/clubscope-platform/hello-service:3bf68f0
           ports:
             - containerPort: 8080
           livenessProbe:
