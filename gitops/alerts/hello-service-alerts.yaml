@@ -1,0 +1,28 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: hello-service-alerts
+  namespace: monitoring
+  labels:
+    release: kube-prometheus-stack
+spec:
+  groups:
+    - name: hello-service.rules
+      rules:
+        - alert: HelloServiceDown
+          expr: kube_deployment_status_replicas_available{deployment="hello-service"} == 0
+          for: 1m
+          labels:
+            severity: critical
+          annotations:
+            summary: "hello-service has no available replicas"
+            description: "The hello-service deployment has had 0 available replicas for more than 1 minute."
+
+        - alert: HelloServiceHighLatency
+          expr: histogram_quantile(0.95, rate(hello_service_request_duration_seconds_bucket[5m])) > 0.5
+          for: 2m
+          labels:
+            severity: warning
+          annotations:
+            summary: "hello-service p95 latency is high"
+            description: "p95 request latency has exceeded 500ms for more than 2 minutes."
