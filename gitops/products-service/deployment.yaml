@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: products-service
-          image: ghcr.io/tavoa2/clubscope-platform/products-service:REPLACE_SHA
+          image: ghcr.io/tavoa2/clubscope-platform/products-service:af4aaf8
           ports:
             - containerPort: 8080
               name: http
