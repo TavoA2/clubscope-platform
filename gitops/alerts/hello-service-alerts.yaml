@@ -17,6 +17,7 @@ spec:
           annotations:
             summary: "hello-service has no available replicas"
             description: "The hello-service deployment has had 0 available replicas for more than 1 minute."
+            runbook_url: "https://github.com/TavoA2/clubscope-platform/blob/main/docs/runbooks/hello-service-down.md"
 
         - alert: HelloServiceHighLatency
           expr: histogram_quantile(0.95, rate(hello_service_request_duration_seconds_bucket[5m])) > 0.5
@@ -26,3 +27,4 @@ spec:
           annotations:
             summary: "hello-service p95 latency is high"
             description: "p95 request latency has exceeded 500ms for more than 2 minutes."
+            runbook_url: "https://github.com/TavoA2/clubscope-platform/blob/main/docs/runbooks/hello-service-high-latency.md"
