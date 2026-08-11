@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: payments-service
-          image: ghcr.io/tavoa2/clubscope-platform/payments-service:a1bce6e
+          image: ghcr.io/tavoa2/clubscope-platform/payments-service:30dbddd
           ports:
             - containerPort: 8080
               name: http
